@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                 Container(
                     margin: EdgeInsets.only(bottom: 10),
                     child: Row(
-                      children: [Icon(Icons.home), Text('home')],
+                      children: [Icon(Icons.home,size: 30,color: Colors.red,), Text('home')],
                     )),
                 Divider(
                   height: 2,
