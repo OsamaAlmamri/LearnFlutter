@@ -72,6 +72,18 @@ class HomePage extends StatelessWidget {
             Container(color:Colors.brown ,width: 200, height: 200,),
             Container(color:Colors.red ,width: 150, height: 150,),
             Container(color:Colors.blue ,width: 100, height: 100,),
+          ],),  Row(
+            children: [
+            Container(child: Text("box 1"), color:Colors.brown , height: 100,),
+            Container(child: Text("box 2"),color:Colors.red , height: 100,),
+            Container(child: Text("box 3"),color:Colors.blue , height: 100,),
+          ],), Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Container(child: Text("box 1"), color:Colors.brown , height: 100,)),
+           Expanded(flex: 2, child: Container(child: Text("box 2"),color:Colors.red , height: 100,)),
+            Expanded(flex: 1,child: Container(child: Text("box 3"),color:Colors.blue , height: 100,)),
           ],),
           Container(
             width: double.infinity,
