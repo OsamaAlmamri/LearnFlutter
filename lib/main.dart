@@ -98,6 +98,13 @@ class HomePage extends StatelessWidget {
                 
                 ),
                 TextButton(onPressed: ()=>{}, child: Text("home")),
+                MaterialButton(onPressed: ()=>{},
+                shape: Border.all(color: Colors.black,width: 20),
+                color: Colors.red,
+                child: Text("clike me "),
+                
+                ),
+                IconButton(onPressed: ()=>{}, icon: Icon(Icons.person)),
                 Container(
                   height: 70,
                   margin: EdgeInsets.symmetric(vertical: 10),
