@@ -16,64 +16,78 @@ const MyDrawer({ Key? key }) : super(key: key);
             margin: EdgeInsets.only(top: 50, left: 20),
             child: Column(
               children: [
-                SizedBox(
-                  height: 4,
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.home,
+                              size: 30,
+                              color: Colors.red,
+                            ),
+                            VerticalDivider(
+                              color: Colors.black,
+                              width: 10,
+                              thickness: 2,
+                            ),
+                            TextButton(onPressed: ()=>{
+                              
+                              Navigator.of(context).pushNamed("home")
+                            }, child: Text('home '))
+                          ],
+                        )),
+                    Divider(
+                      color: Colors.lime,
+                      height: 5,
+                      thickness: 2,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                              
+                              Navigator.of(context).pushNamed("page1")
+                            }, child: Text('page 1'))],
+                        )),
+                    Divider(
+                      height: 2,
+                    ),Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                              
+                             Navigator.of(context).pushNamed("page2")
+                            }, child: Text('page 2'))],
+                        )),
+                    Divider(
+                      height: 2,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                              
+                               Navigator.of(context).pushNamed("page3")
+                            }, child: Text('page 3'))],
+                        )),
+                  ],
                 ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          size: 30,
-                          color: Colors.red,
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                          width: 10,
-                          thickness: 2,
-                        ),
-                        TextButton(onPressed: ()=>{
-                          
-                          Navigator.of(context).pushNamed("home")
-                        }, child: Text('home '))
-                      ],
-                    )),
-                Divider(
-                  color: Colors.lime,
-                  height: 5,
-                  thickness: 2,
-                ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
-                          
-                          Navigator.of(context).pushNamed("page1")
-                        }, child: Text('page 1'))],
-                    )),
-                Divider(
-                  height: 2,
-                ),Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
-                          
-                         Navigator.of(context).pushNamed("page2")
-                        }, child: Text('page 2'))],
-                    )),
-                Divider(
-                  height: 2,
-                ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
-                          
-                           Navigator.of(context).pushNamed("page3")
-                        }, child: Text('page 3'))],
-                    )),
+               Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.back_hand),  TextButton(onPressed: ()=>{
+                              if(  Navigator.of(context).canPop())
+                               Navigator.of(context).pop()
+                            }, child: Text('back '))],
+                        )),
+                  
               ],
+              
             ),
           ),
         )
