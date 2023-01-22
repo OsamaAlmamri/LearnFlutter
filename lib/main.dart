@@ -13,6 +13,11 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("osama"),
         ),
+        floatingActionButton: FloatingActionButton(onPressed: ()=>{},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.yellow,
+        foregroundColor: Colors.black,
+      ),
         drawer: Drawer(
           child: Container(
             margin: EdgeInsets.only(top: 50, left: 20),
