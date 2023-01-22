@@ -105,6 +105,13 @@ class HomePage extends StatelessWidget {
                 
                 ),
                 IconButton(onPressed: ()=>{}, icon: Icon(Icons.person)),
+                InkWell(onTap: ()=>{print("clice")},child: Container(
+                  color: Colors.blue,
+                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+                
+
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("custom buttom") , Icon(Icons.phone_android)],),
+                ),),
                 Container(
                   height: 70,
                   margin: EdgeInsets.symmetric(vertical: 10),
