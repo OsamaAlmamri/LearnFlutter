@@ -179,7 +179,27 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          Stack(
+          Wrap(
+            children: [
+              Container(
+                color: Colors.brown,
+                width: 200,
+                height: 200,
+              ),
+              Container(
+                color: Colors.red,
+                  width: 200,
+                height: 200,
+              ),
+              Container(
+                color: Colors.blue,
+                  width: 200,
+                height: 200,
+              ),
+            ],
+          ),
+
+           Stack(
             alignment: Alignment.center,
             children: [
               Container(
