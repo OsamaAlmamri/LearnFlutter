@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'MyDrawer.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,53 +20,8 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.yellow,
           foregroundColor: Colors.black,
         ),
-        drawer: Drawer(
-          child: Container(
-            margin: EdgeInsets.only(top: 50, left: 20),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 4,
-                ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          size: 30,
-                          color: Colors.red,
-                        ),
-                        VerticalDivider(
-                          color: Colors.black,
-                          width: 10,
-                          thickness: 2,
-                        ),
-                        Text('home')
-                      ],
-                    )),
-                Divider(
-                  color: Colors.lime,
-                  height: 5,
-                  thickness: 2,
-                ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [Icon(Icons.home), Text('cat')],
-                    )),
-                Divider(
-                  height: 2,
-                ),
-                Container(
-                    margin: EdgeInsets.only(bottom: 10),
-                    child: Row(
-                      children: [Icon(Icons.home), Text('uu')],
-                    )),
-              ],
-            ),
-          ),
-        ),
+        drawer:MyDrawer(),
+     
         body: HomePage(),
       ),
     );
@@ -430,3 +386,6 @@ class HomePage extends StatelessWidget {
     ]);
   }
 }
+
+
+
