@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/Home.dart';
+import 'package:my_app/Page1.dart';
+import 'package:my_app/main.dart';
+import 'package:my_app/page2.dart';
+import 'package:my_app/page3.dart';
 
 class MyDrawer extends StatelessWidget {
 const MyDrawer({ Key? key }) : super(key: key);
@@ -28,7 +33,10 @@ const MyDrawer({ Key? key }) : super(key: key);
                           width: 10,
                           thickness: 2,
                         ),
-                        Text('home')
+                        TextButton(onPressed: ()=>{
+                          
+                          Navigator.of(context).pushNamed("home")
+                        }, child: Text('home '))
                       ],
                     )),
                 Divider(
@@ -39,7 +47,20 @@ const MyDrawer({ Key? key }) : super(key: key);
                 Container(
                     margin: EdgeInsets.only(bottom: 10),
                     child: Row(
-                      children: [Icon(Icons.home), Text('cat')],
+                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                          
+                          Navigator.of(context).pushNamed("page1")
+                        }, child: Text('page 1'))],
+                    )),
+                Divider(
+                  height: 2,
+                ),Container(
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Row(
+                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                          
+                         Navigator.of(context).pushNamed("page2")
+                        }, child: Text('page 2'))],
                     )),
                 Divider(
                   height: 2,
@@ -47,7 +68,10 @@ const MyDrawer({ Key? key }) : super(key: key);
                 Container(
                     margin: EdgeInsets.only(bottom: 10),
                     child: Row(
-                      children: [Icon(Icons.home), Text('uu')],
+                      children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                          
+                           Navigator.of(context).pushNamed("page3")
+                        }, child: Text('page 3'))],
                     )),
               ],
             ),
