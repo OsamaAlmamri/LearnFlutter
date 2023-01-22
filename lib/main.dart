@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("osama"),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: ()=>{},
-        child: Icon(Icons.add),
-        backgroundColor: Colors.yellow,
-        foregroundColor: Colors.black,
-      ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => {},
+          child: Icon(Icons.add),
+          backgroundColor: Colors.yellow,
+          foregroundColor: Colors.black,
+        ),
         drawer: Drawer(
           child: Container(
             margin: EdgeInsets.only(top: 50, left: 20),
@@ -85,38 +86,60 @@ class HomePage extends StatelessWidget {
             margin: EdgeInsets.all(10),
             child: Column(
               children: [
-
-                ElevatedButton(onPressed: ()=>{
-                  print("ppppppppppppppppppppp")
-
-                }, child: Text("click me"),
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
-                  padding: EdgeInsets.all(10),
-                  shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,
-                  textStyle: TextStyle(
-                    fontSize: 20,
-
-                  )
-                ),),
-                ElevatedButton.icon(onPressed: ()=>{}, icon: Icon(Icons.home), label: Text("home")
-                
+                ElevatedButton(
+                  onPressed: () => {print("ppppppppppppppppppppp")},
+                  child: Text("click me"),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.green,
+                      padding: EdgeInsets.all(10),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      textStyle: TextStyle(
+                        fontSize: 20,
+                      )),
                 ),
-                TextButton(onPressed: ()=>{}, child: Text("home")),
-                MaterialButton(onPressed: ()=>{},
-                shape: Border.all(color: Colors.black,width: 20),
-                color: Colors.red,
-                child: Text("clike me "),
-                
+                ElevatedButton.icon(
+                    onPressed: () => {},
+                    icon: Icon(Icons.home),
+                    label: Text("home")),
+                TextButton(onPressed: () => {}, child: Text("home")),
+                MaterialButton(
+                  onPressed: () => {},
+                  shape: Border.all(color: Colors.black, width: 20),
+                  color: Colors.red,
+                  child: Text("clike me "),
                 ),
-                IconButton(onPressed: ()=>{}, icon: Icon(Icons.person)),
-                InkWell(onTap: ()=>{print("clice")},child: Container(
-                  color: Colors.blue,
-                  padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                
+                IconButton(onPressed: () => {}, icon: Icon(Icons.person)),
+                InkWell(
+                  onTap: () => {print("clice")},
+                  child: Container(
+                    color: Colors.blue,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("custom buttom"),
+                        Icon(Icons.phone_android)
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => {print("clice")},
+                  onDoubleTap: ()=>{},
 
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("custom buttom") , Icon(Icons.phone_android)],),
-                ),),
+                  child: Container(
+                    color: Colors.blue,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("custom buttom"),
+                        Icon(Icons.phone_android)
+                      ],
+                    ),
+                  ),
+                ),
                 Container(
                   height: 70,
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -138,7 +161,7 @@ class HomePage extends StatelessWidget {
                   style: TextStyle(fontSize: 18),
                 ),
                 Container(
-                margin: EdgeInsets.only(top:10),
+                  margin: EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black, width: 2)),
                   child: Column(
@@ -147,29 +170,25 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
-                                margin: EdgeInsets.all(20 ),
-
+                            margin: EdgeInsets.all(20),
                             child: Row(
                               children: [
                                 Icon(
                                   Icons.star,
-                                 
                                   color: Colors.yellow,
-                                ),
-                                Icon(
-                                  Icons.star,
-                                  color: Colors.yellow, 
                                 ),
                                 Icon(
                                   Icons.star,
                                   color: Colors.yellow,
                                 ),
-
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                ),
                                 Icon(
                                   Icons.star_border_outlined,
                                   color: Colors.yellow,
                                 ),
-
                                 Icon(
                                   Icons.star_border_outlined,
                                   color: Colors.yellow,
@@ -186,28 +205,45 @@ class HomePage extends StatelessWidget {
                           Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                            Icon(Icons.food_bank,color: Colors.green,size: 50,),
-                             Padding(padding: EdgeInsets.all(10)),
-                            Text("Food"),
-                             Padding(padding: EdgeInsets.all(10)),
-                            Text("2.4")
-                          ],), Column(
+                              Icon(
+                                Icons.food_bank,
+                                color: Colors.green,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("Food"),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("2.4")
+                            ],
+                          ),
+                          Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                            Icon(Icons.food_bank,color: Colors.green,size: 50,),
-                             Padding(padding: EdgeInsets.all(10)),
-                            Text("Food"),
-                            Padding(padding: EdgeInsets.all(10)),
-                            Text("2.4")
-                          ],), Column(
+                              Icon(
+                                Icons.food_bank,
+                                color: Colors.green,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("Food"),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("2.4")
+                            ],
+                          ),
+                          Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                            Icon(Icons.food_bank,color: Colors.green,size: 50,),
-                             Padding(padding: EdgeInsets.all(10)),
-                            Text("Food"),
-                             Padding(padding: EdgeInsets.all(10)),
-                            Text("2.4")
-                          ],),
+                              Icon(
+                                Icons.food_bank,
+                                color: Colors.green,
+                                size: 50,
+                              ),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("Food"),
+                              Padding(padding: EdgeInsets.all(10)),
+                              Text("2.4")
+                            ],
+                          ),
                         ],
                       ),
                     ],
@@ -225,39 +261,38 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 color: Colors.red,
-                  width: 200,
-                height: 200,
-              ),
-              Container(
-                color: Colors.blue,
-                  width: 200,
-                height: 200,
-              ),
-            ],
-          ),
-   SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Row(
-            children: [
-              Container(
-                color: Colors.brown,
                 width: 200,
                 height: 200,
               ),
               Container(
-                color: Colors.red,
-                  width: 200,
-                height: 200,
-              ),
-              Container(
                 color: Colors.blue,
-                  width: 200,
+                width: 200,
                 height: 200,
               ),
             ],
-          )),
-
-           Stack(
+          ),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Container(
+                    color: Colors.brown,
+                    width: 200,
+                    height: 200,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    width: 200,
+                    height: 200,
+                  ),
+                  Container(
+                    color: Colors.blue,
+                    width: 200,
+                    height: 200,
+                  ),
+                ],
+              )),
+          Stack(
             alignment: Alignment.center,
             children: [
               Container(
