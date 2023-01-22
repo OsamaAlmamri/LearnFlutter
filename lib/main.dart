@@ -81,7 +81,23 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
 
-            
+                ElevatedButton(onPressed: ()=>{
+                  print("ppppppppppppppppppppp")
+
+                }, child: Text("click me"),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.green,
+                  padding: EdgeInsets.all(10),
+                  shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,
+                  textStyle: TextStyle(
+                    fontSize: 20,
+
+                  )
+                ),),
+                ElevatedButton.icon(onPressed: ()=>{}, icon: Icon(Icons.home), label: Text("home")
+                
+                ),
+                TextButton(onPressed: ()=>{}, child: Text("home")),
                 Container(
                   height: 70,
                   margin: EdgeInsets.symmetric(vertical: 10),
