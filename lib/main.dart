@@ -80,6 +80,8 @@ class HomePage extends StatelessWidget {
             margin: EdgeInsets.all(10),
             child: Column(
               children: [
+
+            
                 Container(
                   height: 70,
                   margin: EdgeInsets.symmetric(vertical: 10),
@@ -198,6 +200,27 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+   SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    child: Row(
+            children: [
+              Container(
+                color: Colors.brown,
+                width: 200,
+                height: 200,
+              ),
+              Container(
+                color: Colors.red,
+                  width: 200,
+                height: 200,
+              ),
+              Container(
+                color: Colors.blue,
+                  width: 200,
+                height: 200,
+              ),
+            ],
+          )),
 
            Stack(
             alignment: Alignment.center,
