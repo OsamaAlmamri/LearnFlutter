@@ -26,6 +26,9 @@ class _Page2State extends State<Page2> {
                 onPressed: () {
                   final snackBar = SnackBar(
                     content: const Text('Hi this is message '),
+                    duration: Duration(seconds: 2),
+                    backgroundColor: Colors.red,
+                    behavior: SnackBarBehavior.fixed,
                     action: SnackBarAction(
                       label: 'Undo',
                       onPressed: () {
