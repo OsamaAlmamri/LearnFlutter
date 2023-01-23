@@ -93,6 +93,17 @@ const MyDrawer({ Key? key }) : super(key: key);
                                Navigator.of(context).pushNamed("list_view_sepretor")
                             }, child: Text('list view sepretor'))],
                         )),
+                            Divider(
+                      height: 2,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                              
+                               Navigator.of(context).pushNamed("grid_view")
+                            }, child: Text('GridView'))],
+                        )),
                   ],
                 ),
                Container(
