@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         "list_view_sepretor":(context)=>ListViewSepretor(),
         "grid_view":(context)=>GridViewBuilder(),
       },
+      debugShowCheckedModeBanner: false,
       home:HomePage());
   }
 }

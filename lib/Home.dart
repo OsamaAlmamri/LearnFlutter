@@ -9,6 +9,18 @@ class HomePage extends StatelessWidget {
       return  Scaffold(
         appBar: AppBar(
           title: Text("Home"),
+          leading: Icon(Icons.home),
+          leadingWidth: 50,
+          actions: [
+            IconButton(icon: Icon(Icons.alarm),onPressed: (){}),
+            IconButton(icon: Icon(Icons.exit_to_app),onPressed: (){}),
+
+           
+          ],
+          elevation: 15,
+          shadowColor: Colors.red,
+          backgroundColor: Colors.green,
+          brightness: Brightness.dark,
         ),
   
         drawer:MyDrawer(),
