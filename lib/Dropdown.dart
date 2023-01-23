@@ -10,7 +10,8 @@ const Dropdown({ Key? key }) : super(key: key);
 
 class _DropdownState extends State<Dropdown> {
   var seletedCountry;
-  var ar_lang=false, en_lang=false;
+  var gender="male";
+  bool ar_lang=false, en_lang=false,id_dark=false;
   @override
   Widget build(BuildContext context){
     return  Scaffold(
@@ -95,7 +96,81 @@ setState(() {
                        en_lang=val!;
                 });
               }),
-            ],))
+                 Text("chooce your gender"),
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text("Male"),
+                Radio(value: "male", 
+                groupValue: gender,
+                onChanged: (val){
+                  setState(() {
+                    gender=val!;
+                  });
+                })
+              ],),
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text("Female"),
+                Radio(value: "female",groupValue:gender, onChanged: (val){
+                  setState(() {
+                    gender=val!;
+                  });
+                })
+              ],),
+
+  Text("Radio List Tile"),
+              RadioListTile( value: "male", 
+              groupValue: gender,
+              title: Text("Male"),
+              subtitle:Text( "male gender"),
+              secondary: Icon(Icons.male),
+                selected: gender=="male",
+              isThreeLine: true,
+              onChanged: (val){
+                setState(() {
+                       gender=val!;
+                });
+              }),
+              RadioListTile( value: "female", 
+              groupValue: gender,
+              title: Text("Female"),
+              subtitle:Text( "female gender"),
+              secondary: Icon(Icons.female),
+                selected: gender=="female",
+              isThreeLine: true,
+              onChanged: (val){
+                setState(() {
+                       gender=val!;
+                });
+              }),
+
+              Text("Switch "),
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                Text("Dark Mode"),
+                Switch(value: id_dark, onChanged: (val)=>{
+                setState(() {
+                       id_dark=val!;
+                })
+                },),
+         
+              ],),
+              SwitchListTile(value: id_dark, 
+              title:   Text("Dark Mode"),
+              secondary: Icon(Icons.dark_mode,color: id_dark?Colors.yellow:Colors.black,),
+              
+              
+              
+              onChanged: (val)=>{
+                setState(() {
+                       id_dark=val!;
+                })
+                },),
+            
+            ],)),
 
 
       ])],),
