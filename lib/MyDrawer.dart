@@ -8,6 +8,7 @@ import 'package:my_app/page3.dart';
 class MyDrawer extends StatelessWidget {
 const MyDrawer({ Key? key }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context){
     return    
@@ -80,6 +81,17 @@ const MyDrawer({ Key? key }) : super(key: key);
                               
                                Navigator.of(context).pushNamed("page3")
                             }, child: Text('list view buildre'))],
+                        )),
+                            Divider(
+                      height: 2,
+                    ),
+                    Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
+                              
+                               Navigator.of(context).pushNamed("list_view_sepretor")
+                            }, child: Text('list view sepretor'))],
                         )),
                   ],
                 ),

@@ -9,7 +9,6 @@ class Page2 extends StatefulWidget {
 }
 
 class _Page2State extends State<Page2> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,28 +41,29 @@ class _Page2State extends State<Page2> {
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: Text("show snck bar")),
-          ElevatedButton(
+            ElevatedButton(
                 onPressed: () {
-           showDialog(context: context, builder: (context){
-            return AlertDialog(
-              title: Text("aler"),
-              actions: [
-                ElevatedButton(onPressed: (){
-                  Navigator.of(context).pop();
-
-                }, child: Text("Cancel")),
-                ElevatedButton(onPressed: (){}, child: Text("Ok")),
-              ],
-              titleTextStyle: TextStyle(color: Colors.blue),
-              icon: Icon(Icons.info),
-              iconColor: Colors.blue,
-              iconPadding: EdgeInsets.all(10),
-              titlePadding: EdgeInsets.all(10),
-              content: Text("content "),
-              
-            );
-
-           });
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("aler"),
+                          actions: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("Cancel")),
+                            ElevatedButton(onPressed: () {}, child: Text("Ok")),
+                          ],
+                          titleTextStyle: TextStyle(color: Colors.blue),
+                          icon: Icon(Icons.info),
+                          iconColor: Colors.blue,
+                          iconPadding: EdgeInsets.all(10),
+                          titlePadding: EdgeInsets.all(10),
+                          content: Text("content "),
+                        );
+                      });
                 },
                 child: Text("show alert")),
           ])
