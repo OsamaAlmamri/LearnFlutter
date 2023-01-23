@@ -18,6 +18,12 @@ const MyDrawer({ Key? key }) : super(key: key);
               children: [
                 Column(
                   children: [
+                    CircleAvatar(
+                      radius:50,
+                      // child: Text("Osama"),
+                      backgroundColor: Colors.blue,
+                      backgroundImage: AssetImage('images/osama.jpg'),
+                    ),
                     SizedBox(
                       height: 4,
                     ),
