@@ -169,6 +169,15 @@ setState(() {
                        id_dark=val!;
                 })
                 },),
+                 Text("ListTile "),
+                ListTile(title: Text("osama"),subtitle: Text("Osama Mohammed HMED ALMAMARI"),
+                leading: Icon(Icons.person),
+                tileColor: Colors.blue,
+                trailing: Text("Web Developer"),
+                onTap: (() => {
+                  print("object")
+                }),
+                )
             
             ],)),
 
