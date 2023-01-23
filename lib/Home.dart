@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
       return  Scaffold(
         appBar: AppBar(
           title: Text("Home"),
+          //leading will remove drawer icon
           leading: Icon(Icons.home),
           leadingWidth: 50,
           actions: [
@@ -24,6 +25,7 @@ class HomePage extends StatelessWidget {
         ),
   
         drawer:MyDrawer(),
+        endDrawer: MyDrawer(),
      
         body:  
     ListView(
