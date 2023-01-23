@@ -14,7 +14,13 @@ class HomePage extends StatelessWidget {
         drawer:MyDrawer(),
      
         body:  
-    ListView(scrollDirection: Axis.vertical, children: [
+    ListView(
+      scrollDirection: Axis.vertical,
+      reverse: true,
+    //  physics: ClampingScrollPhysics(),
+      physics: BouncingScrollPhysics(),
+      
+       children: [
       Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
