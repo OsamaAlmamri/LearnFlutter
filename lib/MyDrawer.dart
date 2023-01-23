@@ -68,7 +68,7 @@ const MyDrawer({ Key? key }) : super(key: key);
                           children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
                               
                              Navigator.of(context).pushNamed("page2")
-                            }, child: Text('page 2'))],
+                            }, child: Text('dialogs '))],
                         )),
                     Divider(
                       height: 2,
@@ -79,7 +79,7 @@ const MyDrawer({ Key? key }) : super(key: key);
                           children: [Icon(Icons.home),  TextButton(onPressed: ()=>{
                               
                                Navigator.of(context).pushNamed("page3")
-                            }, child: Text('page 3'))],
+                            }, child: Text('list view buildre'))],
                         )),
                   ],
                 ),
