@@ -37,6 +37,22 @@ class MyApp extends StatelessWidget {
         "forms":(context)=>Forms(),
       },
       debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.red,
+          buttonColor: Colors.red,
+          textTheme: const TextTheme(
+              headline1: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
+              headline2: TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
+              bodyText1: TextStyle(
+                  height: 2,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+              bodyText2: TextStyle(height: 2, color: Colors.grey, fontSize: 14)),
+        ),
+        locale: Locale('ar'),
       home:Login());
   }
 }
