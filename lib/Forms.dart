@@ -9,6 +9,7 @@ class Forms extends StatefulWidget {
 }
 
 class _FormsState extends State<Forms> {
+  double sliderVal = 50;
   TextEditingController email = new TextEditingController();
 
   GlobalKey<FormState> formState = new GlobalKey<FormState>();
@@ -35,6 +36,15 @@ class _FormsState extends State<Forms> {
             key: formState,
             autovalidateMode: AutovalidateMode.always,
             child: Column(children: [
+              Slider(
+                  min: 0,
+                  max: 100,
+                  value: sliderVal,
+                  onChanged: (val) {
+                    setState(() {
+                      sliderVal = val;
+                    });
+                  }),
               TextFormField(
                 decoration: InputDecoration(
                   hintText: "enter your name",
