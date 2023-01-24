@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/Dropdown.dart';
 import 'package:my_app/ListViewSepretor.dart';
+import 'package:my_app/MyDropdownSearchPage.dart';
 import 'package:my_app/auth/Login.dart';
 import 'package:my_app/page2.dart';
 import 'package:my_app/page3.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         "login":(context)=>Login(),
         "sign_in":(context)=>SignIn(),
         "home":(context)=>HomePage(),
+        "dropdown_search":(context)=>MyDropdownSearchPage(),
         "dropdown":(context)=>Dropdown(),
         "page2":(context)=>Page2(),
         "page3":(context)=>Page3(),

@@ -34,6 +34,8 @@ class MyDrawer extends StatelessWidget {
                   onTap: () {Navigator.of(context).pushNamed("home");},),
                 ListTile(title: Text('dropdown '),leading:Icon(Icons.arrow_drop_down, size: 30,color: Colors.blue, ),
                   onTap: () {Navigator.of(context).pushNamed("dropdown");},),
+                ListTile(title: Text('dropdown_search '),leading:Icon(Icons.arrow_drop_down, size: 30,color: Colors.blue, ),
+                  onTap: () {Navigator.of(context).pushNamed("dropdown_search");},),
                 ListTile(title: Text('dialogs '),leading:Icon(Icons.alarm, size: 30,color: Colors.blue, ),
                   onTap: () {Navigator.of(context).pushNamed("page2");},),
            ListTile(title: Text('list view buildre '),leading:Icon(Icons.list, size: 30,color: Colors.blue, ),
