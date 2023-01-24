@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/Dropdown.dart';
 import 'package:my_app/ListViewSepretor.dart';
+import 'package:my_app/auth/Login.dart';
 import 'package:my_app/page2.dart';
 import 'package:my_app/page3.dart';
 import 'Forms.dart';
@@ -10,6 +11,7 @@ import 'MyDrawer.dart';
 import 'MyNavigationBottomBar.dart';
 import 'MyPageView.dart';
 import 'MyTabBar.dart';
+import 'auth/SignIn.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       routes: {
+        "login":(context)=>Login(),
+        "sign_in":(context)=>SignIn(),
         "home":(context)=>HomePage(),
         "dropdown":(context)=>Dropdown(),
         "page2":(context)=>Page2(),
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
         "forms":(context)=>Forms(),
       },
       debugShowCheckedModeBanner: false,
-      home:HomePage());
+      home:Login());
   }
 }
 
