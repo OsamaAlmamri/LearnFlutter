@@ -66,6 +66,33 @@ class _Page2State extends State<Page2> {
                       });
                 },
                 child: Text("show alert")),
+            ElevatedButton(
+              child: const Text('showModalBottomSheet'),
+              onPressed: () {
+                showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: 200,
+                      color: Colors.amber,
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const Text('Modal BottomSheet'),
+                            ElevatedButton(
+                              child: const Text('Close BottomSheet'),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
           ])
         ],
       ),
