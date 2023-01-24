@@ -48,6 +48,9 @@ class MyDrawer extends StatelessWidget {
               ListTile(title: Text('tab_bar'),leading:Icon(Icons.tab, size: 30,color: Colors.blue, ),
                   onTap: () {Navigator.of(context).pushNamed("tab_bar");},),
 
+              ListTile(title: Text('nav_bar_btn'),leading:Icon(Icons.tab, size: 30,color: Colors.blue, ),
+                  onTap: () {Navigator.of(context).pushNamed("nav_bar_btn");},),
+
               ],
             ),
             ListTile(title: Text('back'),leading:Icon(Icons.exit_to_app, size: 30,color: Colors.blue, ),

@@ -6,6 +6,7 @@ import 'package:my_app/page3.dart';
 import 'Home.dart';
 import 'GridViewBuilder.dart';
 import 'MyDrawer.dart';
+import 'MyNavigationBottomBar.dart';
 import 'MyTabBar.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         "list_view_sepretor":(context)=>ListViewSepretor(),
         "grid_view":(context)=>GridViewBuilder(),
         "tab_bar":(context)=>MyTabBar(),
+        "nav_bar_btn":(context)=>MyNavigationBottomBar(),
       },
       debugShowCheckedModeBanner: false,
       home:HomePage());
