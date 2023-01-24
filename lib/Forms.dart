@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'MyDrawer.dart';
 
@@ -10,6 +9,18 @@ class Forms extends StatefulWidget {
 }
 
 class _FormsState extends State<Forms> {
+  TextEditingController email = new TextEditingController();
+
+  GlobalKey<FormState> formState = new GlobalKey<FormState>();
+
+  send() {
+    var state = formState.currentState;
+    if (state!.validate()) {
+      print("vaild");
+    } else
+      print("in vaild");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,95 +31,91 @@ class _FormsState extends State<Forms> {
       body: ListView(
         scrollDirection: Axis.vertical,
         children: [
-          Column(children: [
-
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: "enter your name",
-              hintStyle: TextStyle(color: Colors.blue),
-              helperMaxLines:2 ,
-              suffix: Text("enter name"),
-              prefixIcon: Icon(Icons.percent),
-            ),
-          ),
-
-            TextFormField(
-              decoration: InputDecoration(
-                  label:Text( "Your Email"),
-                  filled: true,
-                  fillColor: Color.fromARGB(255, 164, 204, 241),
-                  enabled: true,
-                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.red,width: 3))
-
+          Form(
+            key: formState,
+            autovalidateMode: AutovalidateMode.always,
+            child: Column(children: [
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: "enter your name",
+                  hintStyle: TextStyle(color: Colors.blue),
+                  helperMaxLines: 2,
+                  suffix: Text("enter name"),
+                  prefixIcon: Icon(Icons.percent),
+                ),
               ),
-            ),
-            SizedBox(height: 20,),
-            TextFormField(
-              decoration: InputDecoration(
-                  label:Text( "Your Email"),
-                  filled: true,
-                  fillColor: Color.fromARGB(255, 164, 204, 241),
-                  enabled: true,
-                  
-                  enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.red,width: 3))
-
+              TextFormField(
+                decoration: InputDecoration(
+                    label: Text("Your Email"),
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 164, 204, 241),
+                    enabled: true,
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red, width: 3))),
               ),
-            ),
-            TextFormField(
-              cursorColor: Colors.red,
-              initialValue: "yemencoder@gmail.com",
-              keyboardType: TextInputType.emailAddress,
-              maxLength: 50,
-              textAlign: TextAlign.left,
-              textDirection: TextDirection.ltr,
-              decoration: InputDecoration(
-                label:Text( "Your Email"),
-
-                icon: Icon(Icons.email),
-
+              SizedBox(
+                height: 20,
               ),
-            ),
-            TextFormField(
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                label:Text( "Your age "),
-                icon: Icon(Icons.calendar_month),
-
+              Text(email.text.toString()),
+              TextFormField(
+                controller: email,
+                validator: (text) {
+                  if (text!.length < 20) return " must me at less 20 charts ";
+                  return null;
+                },
+                decoration: InputDecoration(
+                    label: Text("Your Email"),
+                    filled: true,
+                    fillColor: Color.fromARGB(255, 164, 204, 241),
+                    enabled: true,
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.red, width: 3))),
               ),
-            ),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                icon: Icon(Icons.remove_red_eye_rounded),
-                label:Text( "passwoed "),
-
-
+              TextFormField(
+                cursorColor: Colors.red,
+                initialValue: "yemencoder@gmail.com",
+                keyboardType: TextInputType.emailAddress,
+                maxLength: 50,
+                textAlign: TextAlign.left,
+                textDirection: TextDirection.ltr,
+                decoration: InputDecoration(
+                  label: Text("Your Email"),
+                  icon: Icon(Icons.email),
+                ),
               ),
-            ),    TextFormField(
-              obscureText: true,
-              textInputAction: TextInputAction.search,
-              decoration: InputDecoration(
-                icon: Icon(Icons.remove_red_eye_rounded),
-                label:Text( "name "),
-
-
+              TextFormField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  label: Text("Your age "),
+                  icon: Icon(Icons.calendar_month),
+                ),
               ),
-            ),
-
-            TextFormField(
-              keyboardType: TextInputType.number,
-              maxLines: 3,
-              decoration: InputDecoration(
-                label:Text( "Describe "),
-
-
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  label: Text("passwoed "),
+                ),
               ),
-            ),
-
-
-          ])
+              TextFormField(
+                obscureText: true,
+                textInputAction: TextInputAction.search,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.remove_red_eye_rounded),
+                  label: Text("name "),
+                ),
+              ),
+              TextFormField(
+                keyboardType: TextInputType.number,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  label: Text("Describe "),
+                ),
+              ),
+              ElevatedButton(onPressed: send, child: Text("Save"))
+            ]),
+          )
         ],
       ),
     );
