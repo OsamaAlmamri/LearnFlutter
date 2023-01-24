@@ -1,11 +1,30 @@
 import 'package:flutter/material.dart';
 import 'MyDrawer.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  late ScrollController sc;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    sc = new ScrollController();
+    sc.addListener(() {
+      print(sc.offset);
+    });
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-     
+
       return  Scaffold(
         appBar: AppBar(
           title: Text("Home"),
@@ -16,24 +35,25 @@ class HomePage extends StatelessWidget {
             IconButton(icon: Icon(Icons.alarm),onPressed: (){}),
             IconButton(icon: Icon(Icons.exit_to_app),onPressed: (){}),
 
-           
+
           ],
           elevation: 15,
           shadowColor: Colors.red,
           backgroundColor: Colors.green,
           brightness: Brightness.dark,
         ),
-  
+
         drawer:MyDrawer(),
         endDrawer: MyDrawer(),
-     
-        body:  
+
+        body:
     ListView(
+      controller: sc,
       scrollDirection: Axis.vertical,
       reverse: true,
     //  physics: ClampingScrollPhysics(),
       physics: BouncingScrollPhysics(),
-      
+
        children: [
       Column(
         mainAxisSize: MainAxisSize.min,
@@ -45,8 +65,10 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 ElevatedButton(
-                  onPressed: () => {print("ppppppppppppppppppppp")},
-                  child: Text("click me"),
+                  onPressed: () => {
+                    sc.jumpTo(sc.position.minScrollExtent)
+                  },
+                  child: Text("go to buttom"),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.green,
                       padding: EdgeInsets.all(10),
@@ -67,7 +89,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.red,
                   child: Text("clike me "),
                 ),
-               
+
                 InkWell(
                   onTap: () => {print("clice")},
                   child: Container(
