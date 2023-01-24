@@ -14,7 +14,10 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title: Text("تسجيل الدخول"),
       ),
-      body: Form(
+      body:ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            Form(
 
         child: Container(
           margin: EdgeInsets.all(20),
@@ -52,9 +55,9 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 10,),
               Container(child: Row(children: [
-                Text("هل لديك حساب من قبل "),
+                Text("ليس لديك حساب من قبل "),
                 TextButton(onPressed: (){
-                  Navigator.of(context).pushNamed('sign_in');
+                  Navigator.of(context).pushReplacementNamed('sign_in');
                 }, child: Text("انشاء حساب"))
               ],),),
 
@@ -62,7 +65,7 @@ class _LoginState extends State<Login> {
             ],
           ),
         ),
-      ),
+      ),])
     );
   }
 }
