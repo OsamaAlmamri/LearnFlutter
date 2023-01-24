@@ -3,6 +3,7 @@ import 'package:my_app/Dropdown.dart';
 import 'package:my_app/ListViewSepretor.dart';
 import 'package:my_app/page2.dart';
 import 'package:my_app/page3.dart';
+import 'Forms.dart';
 import 'Home.dart';
 import 'GridViewBuilder.dart';
 import 'MyDrawer.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         "tab_bar":(context)=>MyTabBar(),
         "nav_bar_btn":(context)=>MyNavigationBottomBar(),
         "page_view":(context)=>MyPageView(),
+        "forms":(context)=>Forms(),
       },
       debugShowCheckedModeBanner: false,
       home:HomePage());

@@ -54,6 +54,9 @@ class MyDrawer extends StatelessWidget {
               ListTile(title: Text('page_view'),leading:Icon(Icons.pageview, size: 30,color: Colors.blue, ),
                   onTap: () {Navigator.of(context).pushNamed("page_view");},),
 
+              ListTile(title: Text('forms'),leading:Icon(Icons.input, size: 30,color: Colors.blue, ),
+                  onTap: () {Navigator.of(context).pushNamed("forms");},),
+
               ],
             ),
             ListTile(title: Text('back'),leading:Icon(Icons.exit_to_app, size: 30,color: Colors.blue, ),
