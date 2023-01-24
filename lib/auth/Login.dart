@@ -63,7 +63,10 @@ class _LoginState extends State<Login> {
                   }, child: Text("انشاء حساب"))
                 ],),),
 
-                ElevatedButton(onPressed: (){}, child: Text("تسجيل الدخول "))
+                ElevatedButton(onPressed: (){
+
+                  Navigator.of(context).pushReplacementNamed('home');
+                }, child: Text("تسجيل الدخول "))
               ],
             ),
           ),
