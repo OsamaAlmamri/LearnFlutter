@@ -7,6 +7,7 @@ import 'Home.dart';
 import 'GridViewBuilder.dart';
 import 'MyDrawer.dart';
 import 'MyNavigationBottomBar.dart';
+import 'MyPageView.dart';
 import 'MyTabBar.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         "grid_view":(context)=>GridViewBuilder(),
         "tab_bar":(context)=>MyTabBar(),
         "nav_bar_btn":(context)=>MyNavigationBottomBar(),
+        "page_view":(context)=>MyPageView(),
       },
       debugShowCheckedModeBanner: false,
       home:HomePage());
