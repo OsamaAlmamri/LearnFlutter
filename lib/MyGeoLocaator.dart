@@ -15,7 +15,7 @@ class MyGeoLocaator extends StatefulWidget {
 
 class _MyGeoLocaatorState extends State<MyGeoLocaator> {
   List<Placemark> placemarks = [];
-
+  late StreamSubscription<ServiceStatus> serviceStatusStream ;
   Future<List<Placemark>> get_placemarks_list(lat, long) async {
     List<Placemark> _placemarks = await placemarkFromCoordinates(lat, long);
     // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
@@ -88,6 +88,11 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
     super.initState();
     _determinePosition().then((value) {
       print(value);
+      serviceStatusStream = Geolocator.getServiceStatusStream().listen(
+              (ServiceStatus status) {
+            print("my live location");
+            print(status);
+          });
       setState(() {
         latlng = value;
 
