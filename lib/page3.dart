@@ -25,6 +25,8 @@ class _Page3State extends State<Page3> {
     // This example uses the Google Books API to search for books about http.
     // https://developers.google.com/books/docs/overview
     var url = Uri.https('shopadmin.erum.ae', '/products', {'q': '{https}'});
+    // String u = "https://shopadmin.erum.ae/products";
+    // var url2 = await http.post( "https://shopadmin.erum.ae/products", body: {}, headers: {});
 
     // Await the http get response, then decode the json-formatted response.
     var response = await http.get(url);
@@ -48,20 +50,23 @@ class _Page3State extends State<Page3> {
       drawer: MyDrawer(),
       body: FutureBuilder(
         future: get_date([]),
-        builder: (context,snapshat){
-          return  (snapshat.data==null)? CircularProgressIndicator():  ListView.builder(
-              itemCount: snapshat.data.length,
-              itemBuilder: (context, i) {
-                return ListTile(
-                  title: Text("${snapshat.data[i]['name']['ar']}"),
-                  subtitle: Text("${snapshat.data[i]['description']['ar']}"),
-                  // trailing: Text("${test[i]['id']}"),
-                  leading: Image.network(
-                    "https://shopadmin.erum.ae${snapshat.data[i]['image']}",
-                    fit: BoxFit.cover,
-                  ),
-                );
-              });
+        builder: (context, snapshat) {
+          return (snapshat.data == null)
+              ? CircularProgressIndicator()
+              : ListView.builder(
+                  itemCount: snapshat.data.length,
+                  itemBuilder: (context, i) {
+                    return ListTile(
+                      title: Text("${snapshat.data[i]['name']['ar']}"),
+                      subtitle:
+                          Text("${snapshat.data[i]['description']['ar']}"),
+                      // trailing: Text("${test[i]['id']}"),
+                      leading: Image.network(
+                        "https://shopadmin.erum.ae${snapshat.data[i]['image']}",
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  });
         },
       ),
     );
