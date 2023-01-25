@@ -5,6 +5,7 @@ import 'package:my_app/MyDropdownSearchPage.dart';
 import 'package:my_app/auth/Login.dart';
 import 'package:my_app/page2.dart';
 import 'package:my_app/page3.dart';
+import 'DateAndTime.dart';
 import 'Forms.dart';
 import 'Home.dart';
 import 'GridViewBuilder.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         "sign_in":(context)=>SignIn(),
         "home":(context)=>HomePage(),
         "geolocator":(context)=>MyGeoLocaator(),
+        "date_and_time":(context)=>DateAndTime(),
         "dropdown_search":(context)=>MyDropdownSearchPage(),
         "dropdown":(context)=>Dropdown(),
         "page2":(context)=>Page2(),

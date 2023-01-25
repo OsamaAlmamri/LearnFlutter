@@ -35,6 +35,8 @@ class MyDrawer extends StatelessWidget {
                     onTap: () {Navigator.of(context).pushNamed("home");},),
                   ListTile(title: Text('geolocator '),leading:Icon(Icons.map, size: 30,color: Colors.blue, ),
                     onTap: () {Navigator.of(context).pushNamed("geolocator");},),
+                  ListTile(title: Text('date_and_time '),leading:Icon(Icons.timer, size: 30,color: Colors.blue, ),
+                    onTap: () {Navigator.of(context).pushNamed("date_and_time");},),
                   ListTile(title: Text('dropdown '),leading:Icon(Icons.arrow_drop_down, size: 30,color: Colors.blue, ),
                     onTap: () {Navigator.of(context).pushNamed("dropdown");},),
                   ListTile(title: Text('dropdown_search '),leading:Icon(Icons.arrow_drop_down, size: 30,color: Colors.blue, ),
