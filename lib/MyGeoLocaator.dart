@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'MyDrawer.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
@@ -66,6 +69,11 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
     return await Geolocator.getCurrentPosition();
   }
 
+   CameraPosition? _kLake =null ;
+
+  CameraPosition? _kGooglePlex=null ;
+
+
   Position latlng = new Position(
       longitude: 0.0,
       latitude: 0,
@@ -77,6 +85,9 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
       speedAccuracy: 0.0);
 
   @override
+
+
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -84,6 +95,19 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
       print(value);
       setState(() {
         latlng = value;
+
+        _kLake = CameraPosition(
+            bearing: 192.8334901395799,
+            target: LatLng(latlng.latitude, latlng.longitude),
+            tilt: 59.440717697143555,
+            zoom: 19.151926040649414);
+
+        _kGooglePlex = CameraPosition(
+          target: LatLng(latlng.latitude, latlng.longitude),
+          zoom: 14.4746,
+        );
+
+
       });
     }).then((value) {
       get_placemarks_list(latlng.latitude, latlng.longitude).then((value3) {
@@ -99,6 +123,14 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
       });
     });
   }
+  final Completer<GoogleMapController> _controller =
+  Completer<GoogleMapController>();
+
+
+  Future<void> _goToTheLake() async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake!));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +139,12 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
           title: Text("GeoLocaator"),
         ),
         drawer: MyDrawer(),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: _goToTheLake,
+          label: const Text('To the lake!'),
+          icon: const Icon(Icons.directions_boat),
+        ),
+
         body: Container(
             child: Column(
           children: [
@@ -128,7 +166,16 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
                   });
                 },
                 child: (Text("getplacemarks "))),
-
+            _kGooglePlex==null?CircularProgressIndicator():   Container(
+              height: 300,
+              child:GoogleMap(
+                mapType: MapType.hybrid,
+                initialCameraPosition: _kGooglePlex!,
+                onMapCreated: (GoogleMapController controller) {
+                  _controller.complete(controller);
+                },
+              ),
+            ),
             Container(
               height: 200,
               child: ListView.builder(
