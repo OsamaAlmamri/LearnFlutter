@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'MyDrawer.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 
 class MyGeoLocaator extends StatefulWidget {
   MyGeoLocaator({Key? key}) : super(key: key);
@@ -11,6 +12,15 @@ class MyGeoLocaator extends StatefulWidget {
 }
 
 class _MyGeoLocaatorState extends State<MyGeoLocaator> {
+  List<Placemark> placemarks = [];
+
+  Future<List<Placemark>> get_placemarks_list(lat, long) async {
+    List<Placemark> _placemarks = await placemarkFromCoordinates(lat, long);
+    // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
+    print(_placemarks);
+    return _placemarks;
+  }
+
   Future<Position> _determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -56,13 +66,32 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
     return await Geolocator.getCurrentPosition();
   }
 
-   Position latlng=new Position(longitude: 0.0, latitude: 0, timestamp:DateTime.now(),
-       accuracy: 0.0, altitude: 0.0, heading: 0.0, speed: 0.0, speedAccuracy: 0.0);
+  Position latlng = new Position(
+      longitude: 0.0,
+      latitude: 0,
+      timestamp: DateTime.now(),
+      accuracy: 0.0,
+      altitude: 0.0,
+      heading: 0.0,
+      speed: 0.0,
+      speedAccuracy: 0.0);
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _determinePosition().then((value) {
+      print(value);
+      setState(() {
+        latlng = value;
+      });
+    }).then((value) {
+      get_placemarks_list(latlng.latitude, latlng.longitude).then((value3) {
+        setState(() {
+          placemarks = value3;
+        });
+      });
+    });
     _determinePosition().then((value) {
       print(value);
       setState(() {
@@ -79,11 +108,43 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
         ),
         drawer: MyDrawer(),
         body: Container(
-          child: Column(children: [
-            Text("lat is ${latlng?.latitude}" ),
-            Text("long is ${latlng?.longitude}" ),
-            Text("altitude is ${latlng?.altitude}" ),
-          ],)
-        ));
+            child: Column(
+          children: [
+            Text("lat is ${latlng?.latitude}"),
+            Text("long is ${latlng?.longitude}"),
+            Text("altitude is ${latlng?.altitude}"),
+            ElevatedButton(
+                onPressed: () async{
+                  print("_placemarks");
+                  // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
+                  // print("_placemarks");
+                  // print(_placemarks);
+                  get_placemarks_list(latlng.latitude, latlng.longitude)
+                      .then((value) {
+                    setState(() {
+                      placemarks = value;
+                      print(value);
+                    });
+                  });
+                },
+                child: (Text("getplacemarks "))),
+
+            Container(
+              height: 200,
+              child: ListView.builder(
+                itemCount: placemarks.length,
+
+                  itemBuilder: (context, i) {
+                    return ListTile(
+                      title: Text("${placemarks[i].name} " + "${placemarks[i].subLocality} "),
+                      subtitle: Text("${placemarks[i].country}"),
+                      trailing: Text("${placemarks[i].administrativeArea}"),
+                      leading: Text("${placemarks[i].subAdministrativeArea}"),
+                    );
+                  }),
+            ),
+
+          ],
+        )));
   }
 }
