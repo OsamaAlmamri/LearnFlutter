@@ -9,6 +9,7 @@ import 'Forms.dart';
 import 'Home.dart';
 import 'GridViewBuilder.dart';
 import 'MyDrawer.dart';
+import 'MyGeoLocaator.dart';
 import 'MyNavigationBottomBar.dart';
 import 'MyPageView.dart';
 import 'MyTabBar.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         "login":(context)=>Login(),
         "sign_in":(context)=>SignIn(),
         "home":(context)=>HomePage(),
+        "geolocator":(context)=>MyGeoLocaator(),
         "dropdown_search":(context)=>MyDropdownSearchPage(),
         "dropdown":(context)=>Dropdown(),
         "page2":(context)=>Page2(),
