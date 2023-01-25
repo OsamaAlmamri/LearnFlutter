@@ -15,6 +15,7 @@ import 'MyNavigationBottomBar.dart';
 import 'MyPageView.dart';
 import 'MyTabBar.dart';
 import 'auth/SignIn.dart';
+import 'my_image_picker.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         "home":(context)=>HomePage(),
         "geolocator":(context)=>MyGeoLocaator(),
         "date_and_time":(context)=>DateAndTime(),
+        "image_picker":(context)=>MyImagePickerPage(),
         "dropdown_search":(context)=>MyDropdownSearchPage(),
         "dropdown":(context)=>Dropdown(),
         "page2":(context)=>Page2(),
