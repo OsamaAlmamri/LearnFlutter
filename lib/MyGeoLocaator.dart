@@ -69,10 +69,9 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
     return await Geolocator.getCurrentPosition();
   }
 
-   CameraPosition? _kLake =null ;
+  CameraPosition? _kLake = null;
 
-  CameraPosition? _kGooglePlex=null ;
-
+  CameraPosition? _kGooglePlex = null;
 
   Position latlng = new Position(
       longitude: 0.0,
@@ -85,9 +84,6 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
       speedAccuracy: 0.0);
 
   @override
-
-
-
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -106,8 +102,6 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
           target: LatLng(latlng.latitude, latlng.longitude),
           zoom: 14.4746,
         );
-
-
       });
     }).then((value) {
       get_placemarks_list(latlng.latitude, latlng.longitude).then((value3) {
@@ -123,14 +117,34 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
       });
     });
   }
-  final Completer<GoogleMapController> _controller =
-  Completer<GoogleMapController>();
 
+  final Completer<GoogleMapController> _controller =
+      Completer<GoogleMapController>();
 
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake!));
   }
+
+  Set<Marker> my_markers = {
+    Marker(
+        markerId: MarkerId("1"),
+        draggable: true,
+        onDragEnd: (val){
+          print(val);
+        },
+        position: LatLng(15.3547028, 44.1847996),
+        infoWindow: InfoWindow(title: "marker 1"),
+      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose)
+        // onTap: () {print("clickMarker ");}
+
+    ),
+    Marker(
+        markerId: MarkerId("2"),
+        position: LatLng(15.3583616, 44.2007552),
+        infoWindow: InfoWindow(title: "marker 2",  onTap: () {print("click InfoWindow");}),
+      ),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +158,6 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
           label: const Text('To the lake!'),
           icon: const Icon(Icons.directions_boat),
         ),
-
         body: Container(
             child: Column(
           children: [
@@ -152,7 +165,7 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
             Text("long is ${latlng?.longitude}"),
             Text("altitude is ${latlng?.altitude}"),
             ElevatedButton(
-                onPressed: () async{
+                onPressed: () async {
                   print("_placemarks");
                   // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
                   // print("_placemarks");
@@ -166,31 +179,33 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
                   });
                 },
                 child: (Text("getplacemarks "))),
-            _kGooglePlex==null?CircularProgressIndicator():   Container(
-              height: 300,
-              child:GoogleMap(
-                mapType: MapType.hybrid,
-                initialCameraPosition: _kGooglePlex!,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                },
-              ),
-            ),
+            _kGooglePlex == null
+                ? CircularProgressIndicator()
+                : Container(
+                    height: 300,
+                    child: GoogleMap(
+                      markers: my_markers,
+                      mapType: MapType.hybrid,
+                      initialCameraPosition: _kGooglePlex!,
+                      onMapCreated: (GoogleMapController controller) {
+                        _controller.complete(controller);
+                      },
+                    ),
+                  ),
             Container(
               height: 200,
               child: ListView.builder(
-                itemCount: placemarks.length,
-
+                  itemCount: placemarks.length,
                   itemBuilder: (context, i) {
                     return ListTile(
-                      title: Text("${placemarks[i].name} " + "${placemarks[i].subLocality} "),
+                      title: Text("${placemarks[i].name} " +
+                          "${placemarks[i].subLocality} "),
                       subtitle: Text("${placemarks[i].country}"),
                       trailing: Text("${placemarks[i].administrativeArea}"),
                       leading: Text("${placemarks[i].subAdministrativeArea}"),
                     );
                   }),
             ),
-
           ],
         )));
   }
