@@ -46,6 +46,7 @@ dependencies:
   jiffy: ^5.0.0
   image_picker: ^0.8.6+1
   video_player: ^2.5.1
+  http: ^0.13.5
 
 
 dev_dependencies:
