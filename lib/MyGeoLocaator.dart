@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -119,7 +118,7 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
   }
 
   final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
+  Completer<GoogleMapController>();
 
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
@@ -130,20 +129,22 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
     Marker(
         markerId: MarkerId("1"),
         draggable: true,
-        onDragEnd: (val){
+        onDragEnd: (val) {
           print(val);
         },
         position: LatLng(15.3547028, 44.1847996),
         infoWindow: InfoWindow(title: "marker 1"),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose)
-        // onTap: () {print("clickMarker ");}
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose)
+      // onTap: () {print("clickMarker ");}
 
     ),
     Marker(
-        markerId: MarkerId("2"),
-        position: LatLng(15.3583616, 44.2007552),
-        infoWindow: InfoWindow(title: "marker 2",  onTap: () {print("click InfoWindow");}),
-      ),
+      markerId: MarkerId("2"),
+      position: LatLng(15.3583616, 44.2007552),
+      infoWindow: InfoWindow(title: "marker 2", onTap: () {
+        print("click InfoWindow");
+      }),
+    ),
   };
 
   @override
@@ -160,53 +161,60 @@ class _MyGeoLocaatorState extends State<MyGeoLocaator> {
         ),
         body: Container(
             child: Column(
-          children: [
-            Text("lat is ${latlng?.latitude}"),
-            Text("long is ${latlng?.longitude}"),
-            Text("altitude is ${latlng?.altitude}"),
-            ElevatedButton(
-                onPressed: () async {
-                  print("_placemarks");
-                  // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
-                  // print("_placemarks");
-                  // print(_placemarks);
-                  get_placemarks_list(latlng.latitude, latlng.longitude)
-                      .then((value) {
-                    setState(() {
-                      placemarks = value;
-                      print(value);
-                    });
-                  });
-                },
-                child: (Text("getplacemarks "))),
-            _kGooglePlex == null
-                ? CircularProgressIndicator()
-                : Container(
-                    height: 300,
-                    child: GoogleMap(
-                      markers: my_markers,
-                      mapType: MapType.hybrid,
-                      initialCameraPosition: _kGooglePlex!,
-                      onMapCreated: (GoogleMapController controller) {
-                        _controller.complete(controller);
-                      },
-                    ),
+              children: [
+                Text("lat is ${latlng?.latitude}"),
+                Text("long is ${latlng?.longitude}"),
+                Text("altitude is ${latlng?.altitude}"),
+                ElevatedButton(
+                    onPressed: () async {
+                      print("_placemarks");
+                      // List<Placemark> _placemarks = await placemarkFromCoordinates(52.2165157, 6.9437819);
+                      // print("_placemarks");
+                      // print(_placemarks);
+                      get_placemarks_list(latlng.latitude, latlng.longitude)
+                          .then((value) {
+                        setState(() {
+                          placemarks = value;
+                          print(value);
+                        });
+                      });
+                    },
+                    child: (Text("getplacemarks "))),
+                _kGooglePlex == null
+                    ? CircularProgressIndicator()
+                    : Container(
+                  height: 400,
+                  child: GoogleMap(
+                    markers: my_markers,
+                    myLocationButtonEnabled: true,
+                    indoorViewEnabled: true,
+                    onTap: (pos) {
+                      my_markers.remove(Marker(markerId: MarkerId("1")));
+                      my_markers.add(Marker(markerId: MarkerId('1'),position: pos));
+                    },
+                    mapType: MapType.normal,
+                    initialCameraPosition: _kGooglePlex!,
+                    onMapCreated: (GoogleMapController controller) {
+                      _controller.complete(controller);
+                    },
                   ),
-            Container(
-              height: 200,
-              child: ListView.builder(
-                  itemCount: placemarks.length,
-                  itemBuilder: (context, i) {
-                    return ListTile(
-                      title: Text("${placemarks[i].name} " +
-                          "${placemarks[i].subLocality} "),
-                      subtitle: Text("${placemarks[i].country}"),
-                      trailing: Text("${placemarks[i].administrativeArea}"),
-                      leading: Text("${placemarks[i].subAdministrativeArea}"),
-                    );
-                  }),
-            ),
-          ],
-        )));
+                ),
+                Container(
+                  height: 200,
+                  child: ListView.builder(
+                      itemCount: placemarks.length,
+                      itemBuilder: (context, i) {
+                        return ListTile(
+                          title: Text("${placemarks[i].name} " +
+                              "${placemarks[i].subLocality} "),
+                          subtitle: Text("${placemarks[i].country}"),
+                          trailing: Text("${placemarks[i].administrativeArea}"),
+                          leading: Text(
+                              "${placemarks[i].subAdministrativeArea}"),
+                        );
+                      }),
+                ),
+              ],
+            )));
   }
 }
