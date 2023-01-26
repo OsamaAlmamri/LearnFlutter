@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                     Container(
                       child: Row(
                         children: [
-                          Text("ليس لديك حساب من قبل "),
+                          Text("ليس لديك حساب من قبل ",style: TextStyle(fontFamily: "NotoSansArabic"),),
                           TextButton(
                               onPressed: () {
                                 Navigator.of(context)

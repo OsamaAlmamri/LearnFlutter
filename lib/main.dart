@@ -50,15 +50,16 @@ class MyApp extends StatelessWidget {
           buttonColor: Colors.red,
           textTheme: const TextTheme(
               headline1: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
+                  fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black,fontFamily: "NotoSansArabic"),
               headline2: TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black),
+                  fontWeight: FontWeight.bold, fontSize: 26, color: Colors.black,fontFamily: "NotoSansArabic"),
               bodyText1: TextStyle(
                   height: 2,
                   color: Colors.grey,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "NotoSansArabic",
                   fontSize: 14),
-              bodyText2: TextStyle(height: 2, color: Colors.grey, fontSize: 14)),
+              bodyText2: TextStyle(height: 2, color: Colors.grey, fontSize: 14,fontFamily: "NotoSansArabic")),
         ),
         locale: Locale('ar'),
       home:Login());
