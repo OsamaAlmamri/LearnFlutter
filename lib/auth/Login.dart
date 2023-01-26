@@ -43,10 +43,14 @@ class _LoginState extends State<Login> {
                     Container(
                       margin: EdgeInsets.only(bottom: 20),
                       child: CircleAvatar(
-                        radius: 50,
-                        // child: Text("Osama"),
+                        radius: 55,
                         backgroundColor: Colors.blue,
-                        backgroundImage: AssetImage('images/osama.jpg'),
+                        child: CircleAvatar(
+                          radius: 50,
+                          // child: Text("Osama"),
+                          backgroundColor: Colors.blue,
+                          backgroundImage: AssetImage('images/osama.jpg'),
+                        ),
                       ),
                       // decoration: BoxDecoration,
                     ),
